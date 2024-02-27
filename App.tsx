@@ -1,117 +1,107 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
   StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
   View,
+  Text,
+  //ImageBackground,
+  StyleSheet,
+  Alert,
+  //Button,
+  TouchableOpacity,
 } from 'react-native';
+import Sound from 'react-native-sound';
+import Header from './components/header';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.background}>
+      <StatusBar backgroundColor={'#CC6E00'} />
+      <Header />
+      {/* <ImageBackground
+        source={require('./assets/Shefvs.png')}
+        resizeMode="cover"
+        style={styles.image}></ImageBackground> */}
+      {/* <Button
+        title="Press me ;)"
+        onPress={() => Alert.alert('Hello there! You indecisive fuck')}
+        color="#984900"
+      /> */}
+      <TouchableOpacity
+        onPress={() => Alert.alert('Bread and eggs')}
+        style={styles.breakfast}>
+        <Text style={styles.breakfastText}>Breakfast</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => Alert.alert('Make yourself a sandwhich')}
+        style={styles.lunch}>
+        <Text style={styles.lunchText}>Lunch</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => Alert.alert('Dal Chawal Khao')}
+        style={styles.dinner}>
+        <Text style={styles.dinnerText}>Dinner</Text>
+      </TouchableOpacity>
     </View>
   );
-}
+};
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
+const buttonText = {
+  color: 'yellow',
+  textAlign: 'center',
+  fontSize: 20,
+};
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  background: {
+    height: '100%',
+    backgroundColor: '#FFE500',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: 'black',
+    textAlign: 'center',
+    paddingTop: 50,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  image: {
+    flex: 1,
+    justifyContent: 'flex-start',
   },
-  highlight: {
-    fontWeight: '700',
+  breakfast: {
+    backgroundColor: '#cc0000',
+    marginRight: '60%',
+    marginLeft: '10%',
+    marginVertical: '10%',
+    paddingHorizontal: 10,
+    paddingVertical: 40,
+    borderRadius: 500,
+  },
+  breakfastText: {
+    ...buttonText,
+  },
+
+  lunch: {
+    backgroundColor: '#cc0000',
+    marginRight: '10%',
+    marginLeft: '60%',
+    marginVertical: '25%',
+    paddingHorizontal: 30,
+    paddingVertical: 40,
+    borderRadius: 500,
+  },
+  lunchText: {
+    ...buttonText,
+  },
+  dinner: {
+    backgroundColor: '#cc0000',
+    marginRight: '60%',
+    marginLeft: '10%',
+    marginVertical: '8%',
+    paddingHorizontal: 10,
+    paddingVertical: 40,
+    borderRadius: 500,
+  },
+  dinnerText: {
+    ...buttonText,
   },
 });
 
